@@ -1,0 +1,591 @@
+---
+const projects = [
+  {
+    slug: "quadcopter",
+    name: "Titan — Autonomous Quadcopter",
+    dates: "Aug 2026 — Present",
+    role: "Personal Project",
+    solo: true,
+    summary: [
+      { label: "Mechanical", text: "Designed and 3D printed a custom 50cm frame in Fusion 360, now on its 6th iteration." },
+      { label: "Electrical", text: "Hand-soldered and wired all electronics (ESCs, UBECs, receiver, GPS, compass, power supply, flight controller peripherals) and tuned GPS/compass-based PID loiter through ArduPilot for stable positioning." },
+      { label: "Software", text: "Wrote a Python pipeline running on a Raspberry Pi 5 combining YOLOv8 object detection with a custom PID control loop for autonomous object-following, communicating with the flight controller over MAVLink." },
+    ],
+    stack: ["Fusion 360", "", "Python", "YOLOv8", "ArduPilot", "MAVLink"],
+    model: "/models/quadcopter.glb",
+    orientation: "0deg 0deg 00deg",
+    cameraOrbit: "0deg 80deg 105%",
+    interactionPrompt: "auto",
+    photos: [
+      "/photos/quadcopter/1.jpeg",
+      "/photos/quadcopter/2.jpeg",
+      "/photos/quadcopter/3.jpeg",
+      "/photos/quadcopter/4.jpeg",
+      "/photos/quadcopter/5.jpeg",
+      "/photos/quadcopter/6.png",
+      "/photos/quadcopter/7.png",
+      "/photos/quadcopter/8.png",
+      "/photos/quadcopter/9.png",
+    ],
+    videos: [
+      "/videos/quadcopter/1.mp4",
+      "/videos/quadcopter/2.mp4",
+      "/videos/quadcopter/3.mp4",
+    ],
+  },
+
+  {
+    slug: "ekranoplan",
+    name: "Phaethon — Ground-Effect Vehicle (Ekranoplan)",
+    dates: "Aug 2026 — Present",
+    role: "Personal Project",
+    solo: true,
+    summary: [
+      { label: "Concept", text: "Researched cost-effective cargo transport by exploring ground/ram effect." },
+      { label: "Build", text: "An 80cm foam airframe with two brushless motors and 5\" propellers, hand-soldered ESCs, flight controller, GPS, motors/servos. Pitch, elevator, and thrust control, tested across 3S/2S LiPo to probe limits of efficient flight." },
+      { label: "Results", text: "Glided on water; measurable ground effect while tethered; Draws 45W at 600g: 63% less power/kilogram than the quadcopter; weak control authority at low speed. Full-scale ekranoplans see 10–20x gains at cruise speed with optimal WIG geometry, suggesting this small low-speed prototype captured only part of the achievable effect." },
+    ],
+    stack: ["Aerodynamics", "Fusion 360", "Simulation", "ArduPilot"],
+    model: "/models/ekranoplan.glb",
+    exposure: 0.7,
+    orientation: "0deg 0deg 70deg",
+    cameraOrbit: "0deg 60deg 105%",
+    photos: [
+      "/photos/ekranoplan/1.jpg",
+      "/photos/ekranoplan/2.jpg",
+      "/photos/ekranoplan/3.jpg",
+      "/photos/ekranoplan/4.jpg",
+      "/photos/ekranoplan/5.jpg",
+      "/photos/ekranoplan/6.jpg",
+      "/photos/ekranoplan/7.jpg",
+      "/photos/ekranoplan/8.jpg",
+      "/photos/ekranoplan/9.jpg",
+    ],
+    videos: [
+      "/videos/ekranoplan/1.mp4",
+      "/videos/ekranoplan/2.mp4",
+      "/videos/ekranoplan/3.mp4",
+    ],
+  },
+
+  {
+    slug: "overunder",
+    name: "VEX V5 — Over Under Season",
+    dates: "2023 – 2024",
+    role: "Team 210T — Lead Builder, Designer, Coder, Driver (2-man team)",
+    summary: [
+      { label: "Design & Build", text: "Large focus on innovative design, including two original mechanisms recognized as world firsts: ball-bearing-fitted omni-wheels for higher load capacity/lower rolling friction, and self-locking, detachable large components using linear slides." },
+      { label: "Programming & Controls", text: "Implemented PID-based speed control, odometry, and pure pursuit path tracking, plus a boomerang controller for autonomous positioning in PROS, with experimental Monte Carlo localization for robot pose estimation." },
+      { label: "Results", text: "9 awards, VEX World Championship Build Award, top-100 global/40,000+ teams, top-5 Canada, top 0.5% worldwide, international recognition." },
+    ],
+    stack: ["Inventor Pro", "C++", "PROS", "PID", "Odometry"],
+    model: "/models/overunder.glb",
+    youtube: "OGq2yLE5gq0",
+    featuredLabel: "Featured — Pit Interview",
+    exposure: 0.35,
+    orientation: "0deg 0deg 250deg",
+    cameraOrbit: "0deg 60deg 105%",
+    photos: [
+      "/photos/overunder/1.jpeg",
+      "/photos/overunder/2.png",
+      "/photos/overunder/3.jpeg",
+      "/photos/overunder/4.jpeg",
+      "/photos/overunder/5.jpeg",
+      "/photos/overunder/6.jpeg",
+      "/photos/overunder/7.jpeg",
+      "/photos/overunder/8.jpeg",
+      "/photos/overunder/9.png",
+    ],
+    videos: [
+      "/videos/overunder/1.mp4",
+      "/videos/overunder/2.mp4",
+      "/videos/overunder/3.mp4",
+    ],
+  },
+
+  {
+    slug: "vex-highstakes",
+    name: "VEX V5 — High Stakes Season",
+    dates: "2024 – 2025 Season",
+    role: "Team 210Z — Lead Builder, Designer, Coder, Robot Driver",
+    summary: [
+      { label: "Design & Build", text: "Designed and machined competition robot subsystems using CAD (Inventor Professional 2025), iterating drivetrain and manipulator mechanisms across a 10-month build season." },
+      { label: "Software", text: "Rewrote the entire codebase from the ground up as a fully custom software stack, using outside libraries only for non-core support like GIF display and LED configuration. Added color-based object tracking with the VEX Vision Sensor to detect and react to game elements in real time." },
+      { label: "Results", text: "14 competition awards, top-250 global ranking" },
+    ],
+    stack: ["Inventor Pro", "C++", "PROS", "CNC", "Git"],
+    model: "/models/highstakes.glb",
+    youtube: "51CzfAAcYG0",
+    featuredLabel: "Featured — Reveal Video",
+    exposure: 0.4,
+    orientation: "200deg 90deg 180deg",
+    cameraOrbit: "0deg 60deg 105%",
+    logbook: "/highstakes logbook.pdf",
+    photos: [
+      "/photos/highstakes/1.jpg",
+      "/photos/highstakes/2.jpg",
+      "/photos/highstakes/3.jpg",
+      "/photos/highstakes/4.jpg",
+      "/photos/highstakes/5.jpg",
+      "/photos/highstakes/6.jpg",
+    ],
+    videos: [
+      "/videos/highstakes/1.mp4",
+      "/videos/highstakes/2.mp4",
+      "/videos/highstakes/3.mp4",
+      "/videos/highstakes/4.mp4",
+      "/videos/highstakes/5.mp4",
+      "/videos/highstakes/6.mp4",
+    ],
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects — Maxwell Li</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  </head>
+  <body>
+    <div class="sheet">
+      <span class="reg reg-tl"></span>
+      <span class="reg reg-tr"></span>
+
+      <header>
+        <a class="back" href="/">← Maxwell Li</a>
+        <h1>Projects</h1>
+      </header>
+
+      <div class="projects">
+        {projects.map((p) => (
+          <section class="project">
+            <div class="project-header">
+              <div>
+                <div class="title-row">
+                  <h2>{p.name}</h2>
+                  {p.logbook && (
+                    <a class="logbook-link" href={p.logbook} target="_blank" rel="noopener noreferrer">Logbook →</a>
+                  )}
+                </div>
+                <p class="meta">{p.role} · {p.dates}</p>
+              </div>
+              <div class="tags">
+                {p.stack.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="viewer-wrap">
+                {p.solo && <span class="stamp">Solo Build</span>}
+                {p.model ? (
+                  <model-viewer
+                  tone-mapping="commerce"
+                  src={p.model}
+                  alt={`3D model of ${p.name}`}
+                  camera-controls
+                  auto-rotate
+                  shadow-intensity="3"
+                  exposure={p.exposure ?? 1}
+                  environment-image="neutral"
+                  orientation={p.orientation ?? "0deg 0deg 0deg"}
+                  camera-orbit={p.cameraOrbit ?? "0deg 75deg 105%"}
+                  interaction-prompt={p.interactionPrompt ?? "none"}
+                  style="width:100%; height:100%;"
+                  ></model-viewer>
+                ) : (
+                  <div class="viewer-placeholder">3D model coming soon</div>
+                )}
+              </div>
+              <div class="summary">
+                {p.summary.map((section) => (
+                  <div class="summary-section">
+                    <span class="summary-label">{section.label}</span>
+                    <p>{section.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {p.youtube && (
+            <>
+                <button class="media-toggle">
+                <span class="arrow">▸</span>
+                <span>{p.featuredLabel}</span>
+                </button>
+                <div class="media-panel">
+                <div class="media-panel-inner">
+                    <div class="feature-video">
+                    <div class="video-embed">
+                        <iframe
+                        src={`https://www.youtube.com/embed/${p.youtube}`}
+                        title={`${p.name} video`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        ></iframe>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </>
+            )}
+
+            <button class="media-toggle">
+              <span class="arrow">▸</span>
+              <span>View media</span>
+              <span class="count">({p.photos.length} photos · {p.videos.length} videos)</span>
+            </button>
+
+            <div class="media-panel">
+              <div class="media-panel-inner">
+                {p.photos?.length > 0 && (
+                  <div class="media-section">
+                    <h3 class="media-label">Gallery</h3>
+                    <div class="photo-grid">
+                      {p.photos.map((src) => (
+                        <button class="thumb" data-lightbox-src={src}>
+                          <img src={src} alt={`${p.name} photo`} loading="lazy" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {p.videos?.length > 0 && (
+                  <div class="media-section">
+                    <h3 class="media-label">Videos</h3>
+                    <div class="video-grid">
+                      {p.videos.map((src) => (
+                        <video controls preload="metadata" playsinline>
+                          <source src={src} type="video/mp4" />
+                        </video>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <img id="lightbox-img" src="" alt="Enlarged photo" />
+    </div>
+
+    <style>
+      :root {
+        --navy: #0b1d2e;
+        --grid: #16324a;
+        --ink: #edf2f7;
+        --muted: #7c93ac;
+        --copper: #c9793c;
+        --line: #2b4a66;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; background: var(--navy); }
+      body { font-family: "IBM Plex Mono", monospace; color: var(--ink); }
+
+      .sheet {
+        position: relative;
+        min-height: 100vh;
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 40px 40px;
+        padding: 2rem clamp(1rem, 5vw, 4rem) 4rem;
+      }
+
+      .reg { position: absolute; width: 18px; height: 18px; opacity: 0.6; }
+      .reg::before, .reg::after { content: ""; position: absolute; background: var(--muted); }
+      .reg::before { width: 100%; height: 1px; top: 50%; }
+      .reg::after { height: 100%; width: 1px; left: 50%; }
+      .reg-tl { top: 24px; left: 24px; }
+      .reg-tr { top: 24px; right: 24px; }
+
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        max-width: 1000px;
+        margin: 1.5rem auto 2.5rem;
+      }
+      .back { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+      .back:hover { color: var(--copper); }
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        letter-spacing: 0.01em;
+        margin: 0;
+        width: 100%;
+      }
+
+      .projects {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .project {
+        border: 1px solid var(--line);
+        background: rgba(11, 29, 46, 0.5);
+      }
+
+      .stamp {
+        position: absolute;
+        top: 1.1rem;
+        left: 0.75rem;
+        padding: 0.3rem 0.8rem;
+        border: 2px solid var(--copper);
+        border-radius: 6px;
+        color: var(--copper);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        transform: rotate(-6deg);
+        opacity: 0.9;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .project-header h2 { font-family: "Space Grotesk", sans-serif; font-size: 1.3rem; margin: 0 0 0.25rem; }
+      .meta { margin: 0; color: var(--muted); font-size: 0.8rem; }
+      .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+      .tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--copper);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.25rem 0.6rem;
+      }
+
+      .project-body {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+      .viewer-wrap {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        background: var(--grid);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .viewer-placeholder {
+        width: 100%; height: 100%;
+        display: flex; align-items: center; justify-content: center;
+        color: var(--muted); font-size: 0.85rem;
+      }
+
+      .summary {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .summary-section p {
+        margin: 0.25rem 0 0;
+        line-height: 1.6;
+        font-size: 0.9rem;
+        color: var(--ink);
+      }
+      .summary-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--copper);
+      }
+
+      .media-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.85rem 1.5rem;
+        background: rgba(43, 74, 102, 0.2);
+        border: none;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .media-toggle:hover { background: rgba(43, 74, 102, 0.4); }
+      .media-toggle .arrow {
+        color: var(--copper);
+        transition: transform 0.2s ease;
+        display: inline-block;
+      }
+      .media-toggle.open .arrow { transform: rotate(90deg); }
+      .media-toggle .count { color: var(--muted); text-transform: none; letter-spacing: normal; margin-left: auto; }
+
+      .media-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.25s ease;
+      }
+      .media-panel-inner { overflow: hidden; min-height: 0; }
+      .media-panel.open { grid-template-rows: 1fr; }
+
+      .media-section { padding: 1.5rem; border-top: 1px solid var(--line); }
+      .media-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin: 0 0 0.75rem;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+      .thumb {
+        aspect-ratio: 1 / 1;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        overflow: hidden;
+        background: none;
+        cursor: pointer;
+        transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+      .thumb:hover { transform: scale(1.03); border-color: var(--copper); }
+      .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+      .video-grid video {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: black;
+        object-fit: cover;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        z-index: 50;
+        cursor: zoom-out;
+      }
+      .lightbox.open { display: flex; }
+      .lightbox img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .feature-video {
+        padding: 1.5rem;
+      }
+      .video-embed {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+      }
+      .video-embed iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .title-row {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .logbook-link {
+        font-size: 0.75rem;
+        color: var(--copper);
+        text-decoration: none;
+        border-bottom: 1px solid var(--copper);
+      }
+      .logbook-link:hover {
+        color: #e0975c;
+        border-color: #e0975c;
+      }
+
+      @media (max-width: 720px) {
+        .project-body { grid-template-columns: 1fr; }
+        .photo-grid, .video-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+
+    <script>
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
+
+      document.querySelectorAll(".thumb").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const src = btn.getAttribute("data-lightbox-src");
+          if (src && lightboxImg && lightbox) {
+            lightboxImg.src = src;
+            lightbox.classList.add("open");
+          }
+        });
+      });
+
+      lightbox?.addEventListener("click", () => {
+        lightbox.classList.remove("open");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") lightbox?.classList.remove("open");
+      });
+
+      document.querySelectorAll(".media-toggle").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          btn.classList.toggle("open");
+          const panel = btn.nextElementSibling;
+          panel?.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>
