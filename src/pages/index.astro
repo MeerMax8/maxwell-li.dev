@@ -531,7 +531,7 @@ const hobbies = [
       
       function updatePointer() {
         if (isDrift) {
-          time += 0.016;
+          time += 0.008; // Slower drift (was 0.016)
           realPointer.x = width * (0.5 + 0.34 * Math.sin(time * 0.7) * Math.cos(time * 0.23));
           realPointer.y = height * (0.5 + 0.30 * Math.sin(time * 0.52 + 1.1));
         }
@@ -541,9 +541,9 @@ const hobbies = [
       }
       
       function updateGrid() {
-        // Reduced gravity well size
-        const SIG = 0.25 * Math.min(width, height);
-        const PULL = 0.20 * Math.min(width, height);
+        // Smaller, less distracting gravity well
+        const SIG = 0.18 * Math.min(width, height);
+        const PULL = 0.15 * Math.min(width, height);
         const sigSq2 = 2 * SIG * SIG;
         
         for (let row = 0; row < rows; row++) {
