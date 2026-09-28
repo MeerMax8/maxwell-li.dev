@@ -139,8 +139,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
   .chapter { position: relative; background: var(--navy-900); }
   .chapter::before { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 58vw; background: radial-gradient(ellipse 60% 40% at 50% 78%, rgba(215, 132, 70, 0.14), transparent 70%); pointer-events: none; }
   .steps { position: relative; z-index: 2; width: 42vw; padding: 0 clamp(20px, 3vw, 48px) 0 var(--margin); }
-  .step { min-height: 88svh; display: flex; flex-direction: column; justify-content: center; padding: 10svh 0; }
-  .step.first { min-height: 100svh; }
+  .step { min-height: 120svh; display: flex; flex-direction: column; justify-content: center; padding: 10svh 0; }
+  .step.first { min-height: 130svh; }
   .step h2 { font-size: clamp(2.2rem, 4.4vw, 4.4rem); font-stretch: 112%; letter-spacing: -0.03em; line-height: 0.98; }
   .step .meta { margin-top: 22px; color: var(--muted); line-height: 1.8; text-transform: none; letter-spacing: 0.04em; }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 24px 0 0; padding: 0; }
@@ -198,8 +198,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
     .pstage { width: 100vw; height: 46svh; background: var(--navy-900); border-bottom: 1px solid var(--line); z-index: 4; }
     .chapter::before { display: none; }
     .steps { width: auto; padding: 46svh var(--margin) 0; }
-    .step { min-height: 62svh; padding: 6svh 0; justify-content: flex-start; }
-    .step.first { min-height: 62svh; }
+    .step { min-height: 90svh; padding: 6svh 0; justify-content: flex-start; }
+    .step.first { min-height: 90svh; }
     .media.tall { grid-template-columns: 1fr; }
     .media.wide .strip { grid-template-columns: repeat(2, 1fr); }
     .media.wide .strip li:first-child { grid-column: 1 / -1; }

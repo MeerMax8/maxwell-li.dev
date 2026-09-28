@@ -10,7 +10,7 @@ export let lenis: Lenis | null = null;
 /** Smooth scroll (skipped under reduced motion) wired into ScrollTrigger. */
 export function initScroll() {
   if (!reduced && !lenis) {
-    lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.9 });
+    lenis = new Lenis({ lerp: 0.07, wheelMultiplier: 0.65, touchMultiplier: 0.8 });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((t) => lenis!.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
