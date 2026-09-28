@@ -26,6 +26,7 @@ const hobbies = [
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <canvas id="gravity-well"></canvas>
     <div class="sheet">
       <span class="reg reg-tl"></span>
       <span class="reg reg-tr"></span>
@@ -158,17 +159,24 @@ const hobbies = [
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; background: var(--navy); }
-      body { font-family: "IBM Plex Mono", monospace; color: var(--ink); }
+      body { font-family: "IBM Plex Mono", monospace; color: var(--ink); position: relative; }
+
+      #gravity-well {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 0;
+        pointer-events: none;
+      }
 
       .sheet {
         position: relative;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        background-image:
-          linear-gradient(var(--grid) 1px, transparent 1px),
-          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-        background-size: 40px 40px;
+        z-index: 1;
       }
 
       .reg { position: absolute; width: 18px; height: 18px; opacity: 0.6; }
@@ -454,6 +462,205 @@ const hobbies = [
         updateMarquee();
       });
       window.addEventListener("scroll", updateMarquee, { passive: true });
+    </script>
+
+    <script>
+      // Gravity Well Effect
+      const canvas = document.getElementById("gravity-well");
+      const ctx = canvas.getContext("2d");
+      
+      const SPACING = 26;
+      const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--copper').trim();
+      
+      let width, height, dpr;
+      let grid = [];
+      let cols, rows;
+      
+      let realPointer = { x: 0, y: 0 };
+      let easedPointer = { x: 0, y: 0 };
+      let pointerEntered = false;
+      let isDrift = true;
+      let time = 0;
+      
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = Math.min(window.innerHeight, document.querySelector('.sheet')?.offsetHeight || window.innerHeight);
+        
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        
+        ctx.scale(dpr, dpr);
+        
+        initGrid();
+      }
+      
+      function initGrid() {
+        grid = [];
+        cols = Math.ceil(width / SPACING) + 1;
+        rows = Math.ceil(height / SPACING) + 1;
+        
+        for (let row = 0; row < rows; row++) {
+          grid[row] = [];
+          for (let col = 0; col < cols; col++) {
+            grid[row][col] = {
+              baseX: col * SPACING,
+              baseY: row * SPACING,
+              x: col * SPACING,
+              y: row * SPACING,
+              col,
+              row
+            };
+          }
+        }
+      }
+      
+      function updatePointer() {
+        if (isDrift) {
+          time += 0.016;
+          realPointer.x = width * (0.5 + 0.34 * Math.sin(time * 0.7) * Math.cos(time * 0.23));
+          realPointer.y = height * (0.5 + 0.30 * Math.sin(time * 0.52 + 1.1));
+        }
+        
+        easedPointer.x += (realPointer.x - easedPointer.x) * 0.10;
+        easedPointer.y += (realPointer.y - easedPointer.y) * 0.10;
+      }
+      
+      function updateGrid() {
+        const SIG = 0.42 * Math.min(width, height);
+        const PULL = 0.30 * Math.min(width, height);
+        const sigSq2 = 2 * SIG * SIG;
+        
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const point = grid[row][col];
+            
+            const dx = easedPointer.x - point.baseX;
+            const dy = easedPointer.y - point.baseY;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            
+            const g = Math.exp(-(d * d) / sigSq2);
+            point.g = g;
+            
+            const moveAmount = g * PULL;
+            const dirX = d > 0 ? dx / d : 0;
+            const dirY = d > 0 ? dy / d : 0;
+            
+            point.x = point.baseX + dirX * moveAmount;
+            point.y = point.baseY + dirY * moveAmount;
+          }
+        }
+      }
+      
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw lines first
+        ctx.strokeStyle = ACCENT;
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const point = grid[row][col];
+            
+            if (col < cols - 1) {
+              const right = grid[row][col + 1];
+              const avgG = (point.g + right.g) / 2;
+              
+              if (avgG >= 0.004) {
+                const alpha = 0.04 + avgG * 0.62;
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(right.x, right.y);
+                ctx.stroke();
+              }
+            }
+            
+            if (row < rows - 1) {
+              const below = grid[row + 1][col];
+              const avgG = (point.g + below.g) / 2;
+              
+              if (avgG >= 0.004) {
+                const alpha = 0.04 + avgG * 0.62;
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.moveTo(point.x, point.y);
+                ctx.lineTo(below.x, below.y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+        
+        // Draw dots
+        ctx.fillStyle = '#ffffff';
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const point = grid[row][col];
+            const g = point.g;
+            
+            const radius = 0.9 + g * 1.9;
+            const alpha = 0.16 + g * 0.62;
+            
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        
+        ctx.globalAlpha = 1;
+      }
+      
+      function loop() {
+        updatePointer();
+        updateGrid();
+        draw();
+        requestAnimationFrame(loop);
+      }
+      
+      // Event listeners on the sheet element to allow interaction
+      const sheet = document.querySelector('.sheet');
+      
+      sheet?.addEventListener('mouseenter', (e) => {
+        if (!pointerEntered) {
+          pointerEntered = true;
+          isDrift = false;
+          realPointer.x = e.clientX;
+          realPointer.y = e.clientY;
+        }
+      });
+      
+      sheet?.addEventListener('mousemove', (e) => {
+        if (pointerEntered) {
+          realPointer.x = e.clientX;
+          realPointer.y = e.clientY;
+        }
+      });
+      
+      sheet?.addEventListener('touchstart', (e) => {
+        isDrift = true;
+        const touch = e.touches[0];
+        realPointer.x = touch.clientX;
+        realPointer.y = touch.clientY;
+      });
+      
+      sheet?.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        realPointer.x = touch.clientX;
+        realPointer.y = touch.clientY;
+      });
+      
+      const ro = new ResizeObserver(() => {
+        resize();
+      });
+      ro.observe(document.body);
+      
+      resize();
+      easedPointer.x = realPointer.x = width / 2;
+      easedPointer.y = realPointer.y = height / 2;
+      loop();
     </script>
   </body>
 </html>
