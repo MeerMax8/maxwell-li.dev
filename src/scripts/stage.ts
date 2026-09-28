@@ -14,7 +14,7 @@ export type View = {
   tx?: number; ty?: number; tz?: number; // look-at offset in model units
   sx?: number; sy?: number; // where the model sits on screen, as a fraction of the viewport (-0.5..0.5)
   scale?: number; // 0..1, the retract/emerge "anchor" transition
-  explode?: number; // 0..1, assembly groups apart (VEX robots only)
+  explode?: number; // 0..1, assembly groups apart
   spin?: number; // extra yaw on the model itself, degrees
 };
 

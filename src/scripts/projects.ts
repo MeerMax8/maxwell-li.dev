@@ -3,17 +3,23 @@ import { initScroll, ScrollTrigger, reduced } from "./scroll";
 import { gravityWell } from "./well";
 import type { ModelConfig } from "../data/projects";
 
-// Camera path per build, over the chapter's scroll (0..1). The VEX robots come apart
-// into their assembly groups during "Design & Build" and are back together for the results.
+// Camera path per build, over the chapter's scroll (0..1). Every build comes apart
+// into its assembly groups during "Design & Build" and is back together for the results.
 const PATHS: Record<string, (View & { t: number })[]> = {
   quadcopter: [
     { t: 0, az: 20, el: 86, dist: 5.3 },
-    { t: 0.45, az: 40, el: 32, dist: 3.4, ty: 0.04 },
+    { t: 0.18, az: 32, el: 44, dist: 4.2, ty: 0.04, explode: 0 },
+    { t: 0.32, az: 44, el: 34, dist: 6.4, explode: 1 },
+    { t: 0.46, az: 58, el: 30, dist: 6.3, explode: 1 },
+    { t: 0.62, az: 68, el: 20, dist: 4.4, explode: 0 },
     { t: 1, az: 80, el: 14, dist: 5.0 },
   ],
   ekranoplan: [
     { t: 0, az: 120, el: 36, dist: 5.0 },
-    { t: 0.5, az: 140, el: 22, dist: 3.9 },
+    { t: 0.18, az: 126, el: 30, dist: 4.4, explode: 0 },
+    { t: 0.32, az: 134, el: 30, dist: 5.6, explode: 1 },
+    { t: 0.46, az: 142, el: 26, dist: 5.5, explode: 1 },
+    { t: 0.62, az: 148, el: 20, dist: 3.9, explode: 0 },
     { t: 1, az: 152, el: 16, dist: 4.0 },
   ],
   overunder: [

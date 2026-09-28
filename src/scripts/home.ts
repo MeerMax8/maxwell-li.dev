@@ -15,9 +15,11 @@ const SEGS: Seg[] = [
   { key: "quadcopter", p0: 0, p1: 0.25, emerge: false, keys: [
     { t: 0, az: 20, el: 86, dist: 5.4 },
     { t: 0.22, az: 24, el: 80, dist: 5.2 },
-    { t: 0.55, az: 42, el: 40, dist: 4.1 },
-    { t: 0.78, az: 54, el: 30, dist: 2.5, ty: 0.06 },
-    { t: 1, az: 72, el: 20, dist: 3.9 },
+    { t: 0.42, az: 38, el: 44, dist: 3.4, ty: 0.04 },
+    { t: 0.52, az: 46, el: 36, dist: 2.6, ty: 0.06, explode: 0 },
+    { t: 0.7, az: 58, el: 34, dist: 6.0, explode: 1 },
+    { t: 0.84, az: 66, el: 30, dist: 6.0, explode: 1 },
+    { t: 1, az: 74, el: 20, dist: 3.9, explode: 0 },
   ] },
   { key: "vex-highstakes", p0: 0.25, p1: 0.46, emerge: true, keys: [
     { t: 0, az: 205, el: 20, dist: 5.1 },
@@ -28,12 +30,17 @@ const SEGS: Seg[] = [
   ] },
   { key: "overunder", p0: 0.46, p1: 0.66, emerge: true, keys: [
     { t: 0, az: 20, el: 30, dist: 5.1 },
-    { t: 0.55, az: 66, el: 10, dist: 2.9, ty: -0.08 },
-    { t: 1, az: 108, el: 18, dist: 4.3 },
+    { t: 0.24, az: 38, el: 20, dist: 4.6, explode: 0 },
+    { t: 0.48, az: 60, el: 24, dist: 6.7, explode: 1 },
+    { t: 0.72, az: 80, el: 22, dist: 6.6, explode: 1 },
+    { t: 1, az: 108, el: 18, dist: 4.3, explode: 0 },
   ] },
   { key: "ekranoplan", p0: 0.66, p1: 0.86, emerge: true, keys: [
     { t: 0, az: 118, el: 34, dist: 4.2 },
-    { t: 0.6, az: 138, el: 20, dist: 3.5 },
+    { t: 0.22, az: 126, el: 30, dist: 4.0, explode: 0 },
+    { t: 0.46, az: 136, el: 30, dist: 5.4, explode: 1 },
+    { t: 0.68, az: 144, el: 26, dist: 5.3, explode: 1 },
+    { t: 0.9, az: 150, el: 18, dist: 3.5, explode: 0 },
     { t: 1, az: 152, el: 16, dist: 3.4 },
   ] },
 ];
