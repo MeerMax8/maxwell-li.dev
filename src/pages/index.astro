@@ -452,8 +452,10 @@ const hobbies = [
         background-position: center;
         border-radius: 12px;
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-        transform: translate(-50%, 120%) rotate(-7deg);
-        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        transform: translate(-50%, -50%) rotate(-7deg);
+        opacity: 0;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         display: flex;
         align-items: flex-end;
         justify-content: center;
@@ -536,7 +538,8 @@ const hobbies = [
 
       .folder-card:hover .card-object,
       .folder-card:focus .card-object {
-        transform: translate(-50%, -42%) rotate(0deg);
+        transform: translate(-50%, -52%) rotate(0deg);
+        opacity: 1;
       }
 
       .folder-card:hover .card-label,
