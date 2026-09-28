@@ -135,11 +135,36 @@ const hobbies = [
         </div>
       </div>
 
-      <div class="hobby-grid">
+      <div class="card-row">
         {hobbies.map((h) => (
-          <div class="hobby-box">
-            <div class="hobby-title">{h.title}</div>
-            <img src={h.img} alt={h.title} />
+          <div class="folder-card" tabindex="0">
+            <svg class="card-sheen" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id={`sheen-${h.title}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#ff6ec7;stop-opacity:0.8" />
+                  <stop offset="33%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+                  <stop offset="66%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+                  <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.8" />
+                </linearGradient>
+              </defs>
+              <rect width="100" height="100" fill={`url(#sheen-${h.title})`} />
+            </svg>
+            
+            <div class="card-object" style={`background-image: url(${h.img})`}>
+              <div class="object-label">{h.title}</div>
+            </div>
+            
+            <svg class="card-face" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <mask id={`folder-mask-${h.title}`}>
+                  <rect width="100" height="100" fill="white" />
+                  <path d="M 20 0 Q 20 0 20 0 L 20 11 Q 20 12 21 12 L 30 12 Q 31 12 31 11 L 31 0 Z" fill="black" />
+                </mask>
+              </defs>
+              <rect width="100" height="100" fill="#1a2942" mask={`url(#folder-mask-${h.title})`} />
+            </svg>
+            
+            <div class="card-label">{h.title}</div>
           </div>
         ))}
       </div>
@@ -381,36 +406,145 @@ const hobbies = [
         margin: 0 0 1.1rem;
       }
 
-      .hobby-grid {
+      .card-row {
         display: flex;
-        gap: 1.25rem;
-        height: clamp(220px, 28vh, 340px);
-        padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+        justify-content: center;
+        gap: 2rem;
+        padding: 0 clamp(1.5rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       }
-      .hobby-box {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-      }
-      .hobby-title {
-        background: var(--soft-blue);
-        color: var(--cream);
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        text-align: center;
-        padding: 0.5rem 0.25rem;
-      }
-      .hobby-box img { flex: 1; width: 100%; object-fit: cover; display: block; min-height: 0; }
 
-      @media (max-width: 720px) {
-        .hobby-grid { flex-wrap: wrap; height: auto; }
-        .hobby-box { flex: 1 1 calc(50% - 0.625rem); }
-        .hobby-box img { aspect-ratio: 1 / 1; }
+      .folder-card {
+        position: relative;
+        width: 280px;
+        height: 340px;
+        cursor: pointer;
+        transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                    filter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        outline: none;
+      }
+
+      .folder-card:focus {
+        outline: 3px solid var(--soft-blue);
+        outline-offset: 4px;
+        border-radius: 14px;
+      }
+
+      .card-sheen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        opacity: 0.9;
+      }
+
+      .card-object {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 75%;
+        height: 65%;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        transform: translate(-50%, 40%) rotate(-7deg);
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 1rem;
+      }
+
+      .object-label {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+        backdrop-filter: blur(8px);
+      }
+
+      .card-face {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-label {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--cream);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 1;
+        transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+      }
+
+      /* Hover/Focus: push other cards back */
+      .card-row:hover .folder-card,
+      .card-row:focus-within .folder-card {
+        transform: scale(0.93);
+        opacity: 0.6;
+        filter: saturate(0.6);
+      }
+
+      /* Hover/Focus: bring active card forward */
+      .folder-card:hover,
+      .folder-card:focus {
+        transform: translateY(-7%) scale(1.07) !important;
+        opacity: 1 !important;
+        filter: saturate(1) !important;
+        z-index: 10;
+      }
+
+      .folder-card:hover .card-face,
+      .folder-card:focus .card-face {
+        transform: translateY(52%);
+      }
+
+      .folder-card:hover .card-object,
+      .folder-card:focus .card-object {
+        transform: translate(-50%, -4%) rotate(3deg);
+      }
+
+      .folder-card:hover .card-label,
+      .folder-card:focus .card-label {
+        opacity: 0;
+      }
+
+      @media (max-width: 920px) {
+        .card-row {
+          flex-wrap: wrap;
+          gap: 1.5rem;
+        }
+        .folder-card {
+          width: 240px;
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .folder-card {
+          width: 100%;
+          max-width: 280px;
+        }
       }
       @media (max-width: 620px) {
         .about-inner { flex-direction: column; text-align: center; }
