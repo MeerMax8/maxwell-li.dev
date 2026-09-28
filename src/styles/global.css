@@ -1,0 +1,117 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/* Tokens: Maxwell's navy/copper blueprint, refined (co-designed with Codex, round 1). */
+:root {
+  --navy-950: #071724;
+  --navy-900: #0b1d2e;
+  --surface: #10283b;
+  --grid: #1c3a50;
+  --line: #31536b;
+  --ink: #f2f4f3;
+  --muted: #9db0bf;
+  --copper: #d78446;
+  --copper-hi: #f0a15f;
+  --paper: #f1ece2;
+  --paper-ink: #282522;
+  --paper-muted: #5e574f;
+
+  --display: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --margin: clamp(20px, 5vw, 88px);
+  --nav-h: 64px;
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--navy-950); -webkit-text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 17px;
+  line-height: 1.55;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+@media (max-width: 640px) { body { font-size: 16px; } }
+
+::selection { background: var(--copper); color: var(--navy-950); }
+:focus-visible { outline: 2px solid var(--copper-hi); outline-offset: 3px; border-radius: 2px; }
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+img, video { display: block; max-width: 100%; }
+html { scrollbar-color: var(--line) var(--navy-950); scrollbar-width: thin; }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 700; }
+p { text-wrap: pretty; margin: 0; }
+
+.mono { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Registration marks: Maxwell's drafting-sheet corners */
+.reg { position: absolute; width: 18px; height: 18px; opacity: 0.55; pointer-events: none; }
+.reg::before, .reg::after { content: ""; position: absolute; background: var(--muted); }
+.reg::before { width: 100%; height: 1px; top: 50%; }
+.reg::after { height: 100%; width: 1px; left: 50%; }
+
+/* Buttons: one primary (solid copper), the rest are quiet ghost links */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  min-height: 44px; padding: 0 1.25em;
+  border-radius: 999px; border: 1px solid var(--line);
+  font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink); text-decoration: none; background: rgba(16, 40, 59, 0.55);
+  transition: transform 160ms var(--ease-out), background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), color 160ms var(--ease-out);
+  cursor: pointer;
+}
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn:hover { border-color: var(--copper); background: rgba(16, 40, 59, 0.9); }
+.btn:active { transform: scale(0.97); }
+.btn.primary { background: var(--copper); border-color: var(--copper); color: var(--navy-950); font-weight: 500; }
+.btn.primary:hover { background: var(--copper-hi); border-color: var(--copper-hi); }
+
+.link-arrow { display: inline-flex; align-items: center; gap: 0.5em; min-height: 44px; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--copper-hi); text-decoration: none; }
+.link-arrow svg { width: 16px; height: 16px; transition: transform 160ms var(--ease-out); }
+.link-arrow:hover svg { transform: translateX(3px); }
+
+/* Nav */
+.nav {
+  position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--margin);
+  transition: background-color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+.nav.solid { background: rgba(7, 23, 36, 0.86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom-color: rgba(49, 83, 107, 0.6); }
+.nav .home { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.nav ul { display: flex; gap: clamp(4px, 2vw, 20px); list-style: none; margin: 0; padding: 0; }
+.nav ul a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color 160ms var(--ease-out); }
+.nav ul a:hover, .nav ul a[aria-current="page"] { color: var(--ink); }
+.nav ul a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--copper); text-underline-offset: 6px; }
+
+/* Footer / contact */
+.contact {
+  position: relative; padding: clamp(96px, 16vh, 180px) var(--margin) 40px;
+  background: var(--navy-950); border-top: 1px solid var(--line);
+}
+.contact h2 { font-size: clamp(2.5rem, 7vw, 6rem); font-stretch: 112%; letter-spacing: -0.03em; line-height: 0.98; }
+.contact .mail { display: inline-block; margin-top: 28px; font-size: clamp(1.25rem, 3vw, 2.1rem); font-weight: 500; color: var(--copper-hi); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 4px; overflow-wrap: anywhere; }
+.contact .mail:hover { color: var(--ink); }
+.contact .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+.contact .foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: clamp(80px, 12vh, 140px); padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+  .btn, .link-arrow svg { transition: none; }
+}
+
+.skip { position: fixed; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 6px; background: var(--copper); color: var(--navy-950); font-family: var(--mono); font-size: 12px; text-decoration: none; }
+.skip:focus { top: 12px; }

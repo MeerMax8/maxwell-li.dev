@@ -1,0 +1,287 @@
+{
+ "about": {
+  "gaming": {
+   "src": "public/photos/about/gaming.jpeg",
+   "w": 1600,
+   "h": 1200
+  },
+  "hiking": {
+   "src": "public/photos/about/hiking.jpeg",
+   "w": 1600,
+   "h": 1200
+  },
+  "instruments": {
+   "src": "public/photos/about/instruments.jpg",
+   "w": 1600,
+   "h": 1902
+  },
+  "me": {
+   "src": "public/photos/about/me.jpg",
+   "w": 1080,
+   "h": 1080
+  },
+  "robotics": {
+   "src": "public/photos/about/robotics.jpeg",
+   "w": 1600,
+   "h": 1067
+  },
+  "travelling": {
+   "src": "public/photos/about/travelling.jpeg",
+   "w": 1600,
+   "h": 1200
+  }
+ },
+ "ekranoplan": {
+  "1": {
+   "src": "public/photos/ekranoplan/1.jpg",
+   "w": 916,
+   "h": 589
+  },
+  "2": {
+   "src": "public/photos/ekranoplan/2.jpg",
+   "w": 907,
+   "h": 564
+  },
+  "3": {
+   "src": "public/photos/ekranoplan/3.jpg",
+   "w": 1216,
+   "h": 595
+  },
+  "4": {
+   "src": "public/photos/ekranoplan/4.jpg",
+   "w": 1258,
+   "h": 591
+  },
+  "5": {
+   "src": "public/photos/ekranoplan/5.jpg",
+   "w": 1396,
+   "h": 982
+  },
+  "6": {
+   "src": "public/photos/ekranoplan/6.jpg",
+   "w": 1393,
+   "h": 697
+  },
+  "7": {
+   "src": "public/photos/ekranoplan/7.jpg",
+   "w": 1333,
+   "h": 616
+  },
+  "8": {
+   "src": "public/photos/ekranoplan/8.jpg",
+   "w": 667,
+   "h": 1015
+  },
+  "9": {
+   "src": "public/photos/ekranoplan/9.jpg",
+   "w": 1600,
+   "h": 1107
+  },
+  "v1": {
+   "src": "public/videos/ekranoplan/1.mp4",
+   "w": 720,
+   "h": 1280
+  },
+  "v2": {
+   "src": "public/videos/ekranoplan/2.mp4",
+   "w": 1080,
+   "h": 1920
+  },
+  "v3": {
+   "src": "public/videos/ekranoplan/3.mp4",
+   "w": 1080,
+   "h": 1920
+  }
+ },
+ "highstakes": {
+  "1": {
+   "src": "public/photos/highstakes/1.jpg",
+   "w": 1600,
+   "h": 1067
+  },
+  "2": {
+   "src": "public/photos/highstakes/2.jpg",
+   "w": 1600,
+   "h": 1066
+  },
+  "3": {
+   "src": "public/photos/highstakes/3.jpg",
+   "w": 1600,
+   "h": 2133
+  },
+  "4": {
+   "src": "public/photos/highstakes/4.jpg",
+   "w": 680,
+   "h": 1024
+  },
+  "5": {
+   "src": "public/photos/highstakes/5.jpg",
+   "w": 1600,
+   "h": 1067
+  },
+  "6": {
+   "src": "public/photos/highstakes/6.jpg",
+   "w": 1600,
+   "h": 1200
+  },
+  "v1": {
+   "src": "public/videos/highstakes/1.mp4",
+   "w": 480,
+   "h": 854
+  },
+  "v2": {
+   "src": "public/videos/highstakes/2.mp4",
+   "w": 640,
+   "h": 360
+  },
+  "v3": {
+   "src": "public/videos/highstakes/3.mp4",
+   "w": 854,
+   "h": 480
+  },
+  "v4": {
+   "src": "public/videos/highstakes/4.mp4",
+   "w": 360,
+   "h": 640
+  },
+  "v5": {
+   "src": "public/videos/highstakes/5.mp4",
+   "w": 1080,
+   "h": 1920
+  },
+  "v6": {
+   "src": "public/videos/highstakes/6.mp4",
+   "w": 1080,
+   "h": 1920
+  }
+ },
+ "overunder": {
+  "1": {
+   "src": "public/photos/overunder/1.jpeg",
+   "w": 1600,
+   "h": 1200
+  },
+  "2": {
+   "src": "public/photos/overunder/2.png",
+   "w": 733,
+   "h": 1221
+  },
+  "3": {
+   "src": "public/photos/overunder/3.jpeg",
+   "w": 1600,
+   "h": 1067
+  },
+  "4": {
+   "src": "public/photos/overunder/4.jpeg",
+   "w": 1600,
+   "h": 1067
+  },
+  "5": {
+   "src": "public/photos/overunder/5.jpeg",
+   "w": 1478,
+   "h": 1108
+  },
+  "6": {
+   "src": "public/photos/overunder/6.jpeg",
+   "w": 1600,
+   "h": 1200
+  },
+  "7": {
+   "src": "public/photos/overunder/7.jpeg",
+   "w": 1600,
+   "h": 2133
+  },
+  "8": {
+   "src": "public/photos/overunder/8.jpeg",
+   "w": 1600,
+   "h": 1200
+  },
+  "9": {
+   "src": "public/photos/overunder/9.png",
+   "w": 1600,
+   "h": 869
+  },
+  "v1": {
+   "src": "public/videos/overunder/1.mp4",
+   "w": 1080,
+   "h": 1920
+  },
+  "v2": {
+   "src": "public/videos/overunder/2.mp4",
+   "w": 640,
+   "h": 360
+  },
+  "v3": {
+   "src": "public/videos/overunder/3.mp4",
+   "w": 1280,
+   "h": 720
+  },
+  "v4": {
+   "src": "public/videos/overunder/4.mp4",
+   "w": 720,
+   "h": 1280
+  }
+ },
+ "quadcopter": {
+  "1": {
+   "src": "public/photos/quadcopter/1.jpeg",
+   "w": 1600,
+   "h": 2133
+  },
+  "2": {
+   "src": "public/photos/quadcopter/2.jpeg",
+   "w": 1080,
+   "h": 1387
+  },
+  "3": {
+   "src": "public/photos/quadcopter/3.jpeg",
+   "w": 1080,
+   "h": 1920
+  },
+  "4": {
+   "src": "public/photos/quadcopter/4.jpeg",
+   "w": 1600,
+   "h": 2133
+  },
+  "5": {
+   "src": "public/photos/quadcopter/5.jpeg",
+   "w": 1600,
+   "h": 2133
+  },
+  "6": {
+   "src": "public/photos/quadcopter/6.png",
+   "w": 1600,
+   "h": 867
+  },
+  "7": {
+   "src": "public/photos/quadcopter/7.png",
+   "w": 1480,
+   "h": 1033
+  },
+  "8": {
+   "src": "public/photos/quadcopter/8.png",
+   "w": 1447,
+   "h": 1128
+  },
+  "9": {
+   "src": "public/photos/quadcopter/9.png",
+   "w": 1500,
+   "h": 1146
+  },
+  "v1": {
+   "src": "public/videos/quadcopter/1.mp4",
+   "w": 720,
+   "h": 720
+  },
+  "v2": {
+   "src": "public/videos/quadcopter/2.mp4",
+   "w": 360,
+   "h": 360
+  },
+  "v3": {
+   "src": "public/videos/quadcopter/3.mp4",
+   "w": 1080,
+   "h": 1080
+  }
+ }
+}

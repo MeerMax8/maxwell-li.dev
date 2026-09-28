@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import { contact } from "../data/projects";
+
+interface Props { title: string; description: string; page: "home" | "projects" }
+const { title, description, page } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#071724" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <script is:inline>document.documentElement.classList.add("js");setTimeout(function(){var d=document.documentElement;if(!d.classList.contains("ready"))d.classList.remove("js");},8000);</script>
+  </head>
+  <body data-page={page}>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="nav" id="nav">
+      <a class="home" href="/">Maxwell Li</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/projects" aria-current={page === "projects" ? "page" : undefined}>Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="contact" id="contact">
+      <h2>Building something?<br />Let's talk.</h2>
+      <a class="mail" href={`mailto:${contact.email}`}>{contact.email}</a>
+      <div class="socials">
+        {contact.links.map((l) => (
+          <a class="btn" href={l.url} target="_blank" rel="noopener noreferrer">{l.label}</a>
+        ))}
+      </div>
+      <div class="foot mono">
+        <span>Maxwell Li, {year}</span>
+        <span>Mechatronics engineering, University of Waterloo</span>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById("nav");
+      const setNav = () => nav?.classList.toggle("solid", window.scrollY > 24);
+      setNav();
+      window.addEventListener("scroll", setNav, { passive: true });
+    </script>
+  </body>
+</html>
