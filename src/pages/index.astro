@@ -26,8 +26,8 @@ const hobbies = [
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <canvas id="gravity-well"></canvas>
     <div class="sheet">
+      <canvas id="gravity-well"></canvas>
       <span class="reg reg-tl"></span>
       <span class="reg reg-tr"></span>
       <span class="reg reg-bl"></span>
@@ -162,11 +162,11 @@ const hobbies = [
       body { font-family: "IBM Plex Mono", monospace; color: var(--ink); position: relative; }
 
       #gravity-well {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         z-index: 0;
         pointer-events: none;
       }
@@ -177,6 +177,7 @@ const hobbies = [
         display: flex;
         flex-direction: column;
         z-index: 1;
+        overflow: hidden;
       }
 
       .reg { position: absolute; width: 18px; height: 18px; opacity: 0.6; }
@@ -471,6 +472,7 @@ const hobbies = [
       
       const SPACING = 26;
       const ACCENT = getComputedStyle(document.documentElement).getPropertyValue('--copper').trim();
+      const GRID_PADDING = 200; // Extend grid beyond viewport
       
       let width, height, dpr;
       let grid = [];
@@ -484,8 +486,9 @@ const hobbies = [
       
       function resize() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const sheet = document.querySelector('.sheet');
         width = window.innerWidth;
-        height = Math.min(window.innerHeight, document.querySelector('.sheet')?.offsetHeight || window.innerHeight);
+        height = sheet?.offsetHeight || window.innerHeight;
         
         canvas.width = width * dpr;
         canvas.height = height * dpr;
@@ -499,17 +502,23 @@ const hobbies = [
       
       function initGrid() {
         grid = [];
-        cols = Math.ceil(width / SPACING) + 1;
-        rows = Math.ceil(height / SPACING) + 1;
+        // Start grid before viewport and extend past it
+        const startX = -GRID_PADDING;
+        const startY = -GRID_PADDING;
+        const endX = width + GRID_PADDING;
+        const endY = height + GRID_PADDING;
+        
+        cols = Math.ceil((endX - startX) / SPACING) + 1;
+        rows = Math.ceil((endY - startY) / SPACING) + 1;
         
         for (let row = 0; row < rows; row++) {
           grid[row] = [];
           for (let col = 0; col < cols; col++) {
             grid[row][col] = {
-              baseX: col * SPACING,
-              baseY: row * SPACING,
-              x: col * SPACING,
-              y: row * SPACING,
+              baseX: startX + col * SPACING,
+              baseY: startY + row * SPACING,
+              x: startX + col * SPACING,
+              y: startY + row * SPACING,
               col,
               row
             };
@@ -529,8 +538,9 @@ const hobbies = [
       }
       
       function updateGrid() {
-        const SIG = 0.42 * Math.min(width, height);
-        const PULL = 0.30 * Math.min(width, height);
+        // Reduced gravity well size
+        const SIG = 0.25 * Math.min(width, height);
+        const PULL = 0.20 * Math.min(width, height);
         const sigSq2 = 2 * SIG * SIG;
         
         for (let row = 0; row < rows; row++) {
